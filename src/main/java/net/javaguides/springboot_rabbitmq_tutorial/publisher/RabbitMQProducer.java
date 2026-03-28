@@ -1,12 +1,13 @@
+package net.javaguides.springboot_rabbitmq_tutorial.publisher;
+
 import java.util.logging.Logger;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class rabbitMQProducer {
+public class RabbitMQProducer {
 
     @Value("${rabbitmq.exchange.name}")
     private String exchange;
@@ -14,11 +15,11 @@ public class rabbitMQProducer {
     @Value("${rabbitmq.routing.key}")
     private String routingKey;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(rabbitMQProducer.class);
+    private static final Logger LOGGER = Logger.getLogger(RabbitMQProducer.class.getName());
 
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
-    public rabbitMQProducer(RabbitTemplate rabbitTemplate) {
+    public RabbitMQProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
